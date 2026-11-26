@@ -16,7 +16,10 @@ public class FirstScript : MonoBehaviour
     {
         Add();
         collider = gameObject.GetComponent<Collider>();
+
         collider.enabled = false;
+
+        
 
         
 
@@ -25,15 +28,21 @@ public class FirstScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-       gameobject.transform.localScale =new Vector3(gameobject.transform.localScale.x + value.x, gameobject.transform.localScale.y + value.y, gameobject.transform.localScale.z + value.z);
-        gameobject.transform.position = new Vector3(gameobject.transform.position.x + value.x, gameobject.transform.position.y + value.y, gameobject.transform.position.z + value.z);
+        if(gameObject.transform.localScale.x < 5f)
+        {
+            gameObject.transform.localScale += value;
+        }
+        else if(gameObject.transform.localScale.x > 5f)
+        {
+            gameObject.transform.localScale = Vector3.one;
+        }
+            gameobject.transform.position = new Vector3(gameobject.transform.position.x + value.x, gameobject.transform.position.y + value.y, gameobject.transform.position.z + value.z);
 
     }
     public void Add()
     {
-        int live = lives + 3;
-        Debug.Log(live);
+        lives = lives + 3;
+        Debug.Log(lives);
 
     }
     public int Add(int x)
